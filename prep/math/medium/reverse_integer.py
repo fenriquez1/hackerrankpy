@@ -21,18 +21,22 @@ Constraints:
 -231 <= x <= 231 - 1
 """
 
+from collections import deque
+
 
 class Solution:
     def reverse(self, x: int) -> int:
-        xs_arr = [c for c in str(x)]
-        xs_arr.reverse()
+        xs_arr = deque([c for c in str(x)])
         is_negative = False
         if x < 0:
-            xs_arr = xs_arr[:-1]
+            xs_arr.popleft()
             is_negative = True
         xs = ""
-        for c in xs_arr:
-            xs += c
+        try:
+            while True:
+                xs += xs_arr.pop()
+        except IndexError:
+            pass
         xr = int(xs)
         if is_negative:
             xr *= -1
