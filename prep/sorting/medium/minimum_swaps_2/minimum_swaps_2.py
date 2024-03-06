@@ -12,20 +12,6 @@ Using enumerate to create a dict {number: pos_in_array} allows fast
 lookup and passes all tests.
 """
 
-import math
-
-
-def find_min(arr, lt, rt, target):
-    half = math.floor((lt + rt) / 2)
-    if arr[half] == target:
-        return half
-    if lt == rt:
-        return -1
-    m1 = find_min(arr, lt, half, target)
-    if arr[m1] == target:
-        return m1
-    return find_min(arr, half + 1, rt, target)
-
 
 # Complete the minimumSwaps function below.
 def minimumSwaps(arr):
